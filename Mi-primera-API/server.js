@@ -129,7 +129,7 @@ app.use(express.json());
 
 //Filtrar producto por id
 app.get("/productos/:id", (req, res) => {
-    const id = req.params.id
+    const {id} = req.params
     const encontrado = data.find(u => u.id === Number(id))
     if (!encontrado) {
         return res.status(404).json({
@@ -187,6 +187,24 @@ app.post("/productos", (req, res) => {
 
 })
 
+//OPERACIONES PUT
+app.put("/productos/:id", (req, res) => {
+  const {id} = req.params
+  const {nombre, marca, precio, stock, disponible} = req.body
+  const indice = data.findIndex(d => d.id === Number(id))
+
+  if (indice === -1) {
+    return res.status(404).json({
+      error: "Producto no encontrado"
+    })
+  }
+
+  data[indice] = {id: id, nombre, marca, precio, stock, disponible}
+  res.json({
+    mensaje: "Producto actualizado correctamente",
+    producto: data[indice]
+  })
+})
 
 
 
