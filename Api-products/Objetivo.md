@@ -1,0 +1,8 @@
+**OBJETIVO**
+
+Crear operacione CRUD
+
+CREATE
+READ
+UPDATE
+DELETE
