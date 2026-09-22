@@ -6,7 +6,6 @@ import { router } from "../routesProducts.js";
 // Filtrar producto por id
 export const getProductoPorId = (req, res) => {
   const { id } = req.params;
-  // Nota: En tu captura usabas u.u_id, pero en tu texto usas u.id. Asegúrate de que coincida con tu data.js
   const encontrado = data.find(u => u.id === Number(id));
   
   if (!encontrado) {
